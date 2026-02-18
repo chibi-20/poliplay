@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLIPLAY - Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container game-container">
+        <div class="game-header">
+            <h1 class="game-title">POLIPLAY</h1>
+            <button class="back-btn" onclick="location.href='index.html'">← Back to Home</button>
+        </div>
+        
+        <div class="categories-grid">
+            <button class="category-btn political-issues" onclick="startGame('Political Issues')">
+                <div class="category-icon">🤝</div>
+                <div class="category-name">POLITICAL ISSUES</div>
+            </button>
+            
+            <button class="category-btn law" onclick="startGame('Law')">
+                <div class="category-icon">⚖️</div>
+                <div class="category-name">LAW</div>
+            </button>
+            
+            <button class="category-btn roles" onclick="startGame('Roles')">
+                <div class="category-icon">📝</div>
+                <div class="category-name">ROLES</div>
+            </button>
+            
+            <button class="category-btn figures" onclick="startGame('Figures')">
+                <div class="category-icon">✅</div>
+                <div class="category-name">FIGURES</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Question Modal -->
+    <div id="questionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="categoryTitle">Category</h2>
+                <div class="timer-container">
+                    <span class="timer-label">Time:</span>
+                    <span id="timer" class="timer">20</span>
+                    <span class="timer-label">s</span>
+                </div>
+            </div>
+            
+            <div class="modal-body">
+                <p id="questionText" class="question-text">Question text here...</p>
+                
+                <div id="answersContainer" class="answers-container">
+                    <!-- Answers will be dynamically inserted here -->
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="close-btn" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="correctAudio" src="resources/audio/music.mp3"></audio>
+    <audio id="wrongAudio" src="resources/audio/aww.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

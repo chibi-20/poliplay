@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLIPLAY - Question Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Form -->
+    <div id="loginSection" class="container login-container">
+        <div class="login-box">
+            <h1 class="game-title">POLIPLAY</h1>
+            <h2>Question Generator Access</h2>
+            <p class="login-subtitle">Enter credentials to continue</p>
+            
+            <form id="loginForm" onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <div id="loginError" class="error-message"></div>
+                
+                <div class="form-buttons">
+                    <button type="button" class="back-btn" onclick="location.href='index.html'">Back</button>
+                    <button type="submit" class="submit-btn">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Question Generator Section (Hidden by default) -->
+    <div id="generatorSection" class="container generator-container" style="display: none;">
+        <div class="generator-header">
+            <h1 class="game-title">POLIPLAY</h1>
+            <h2>Question Generator</h2>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        
+        <div class="generator-form">
+            <div class="form-section">
+                <h3>Create New Question</h3>
+                
+                <div class="form-group">
+                    <label for="questionCategory">Category:</label>
+                    <select id="questionCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="Political Issues">Political Issues</option>
+                        <option value="Law">Law</option>
+                        <option value="Roles">Roles</option>
+                        <option value="Figures">Figures</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="questionType">Question Type:</label>
+                    <select id="questionType" onchange="toggleAnswerFields()" required>
+                        <option value="">Select a type</option>
+                        <option value="Multiple Choice">Multiple Choice</option>
+                        <option value="Identification">Identification</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="questionInput">Question:</label>
+                    <textarea id="questionInput" rows="3" required></textarea>
+                </div>
+                
+                <!-- Multiple Choice Options -->
+                <div id="multipleChoiceFields" style="display: none;">
+                    <div class="form-group">
+                        <label for="optionA">Option A:</label>
+                        <input type="text" id="optionA">
+                    </div>
+                    <div class="form-group">
+                        <label for="optionB">Option B:</label>
+                        <input type="text" id="optionB">
+                    </div>
+                    <div class="form-group">
+                        <label for="optionC">Option C:</label>
+                        <input type="text" id="optionC">
+                    </div>
+                    <div class="form-group">
+                        <label for="optionD">Option D:</label>
+                        <input type="text" id="optionD">
+                    </div>
+                    <div class="form-group">
+                        <label for="correctOption">Correct Answer:</label>
+                        <select id="correctOption">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Identification Fields -->
+                <div id="identificationFields" style="display: none;">
+                    <div class="form-group">
+                        <label for="identificationAnswer">Correct Answer:</label>
+                        <input type="text" id="identificationAnswer">
+                    </div>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="button" class="clear-btn" onclick="clearForm()">Clear</button>
+                    <button type="button" class="submit-btn" onclick="addQuestion()">Add Question</button>
+                </div>
+                
+                <div id="successMessage" class="success-message"></div>
+            </div>
+            
+            <div class="questions-list-section">
+                <h3>Saved Questions</h3>
+                <div id="questionsList" class="questions-list">
+                    <!-- Questions will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
